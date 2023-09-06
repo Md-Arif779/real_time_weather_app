@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- Loading third party fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+  <link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Loading main css file -->
+
+  <!-- Custom CSS to change navbar and footer colors -->
+  <style>
+    /* Navbar style */
+    .site-header {
+      background-color: #8B0000; /* Deep red color */
+      color: #fff; /* Text color */
+    }
+
+    /* Footer style */
+    .site-footer {
+      background-color: #f8f8f8; /* Light white color */
+      color: #333; /* Text color */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="site-content">
+    <div class="site-header">
+      <div class="container">
+        <a href="{% url 'home' %}" class="branding">
+          <img src="{% static 'images/logo.png' %}" alt="" class="logo">
+          <div class="logo-type">
+            <h1 class="site-title">Weather App</h1>
+            <small class="site-description">Real time weather</small>
+          </div>
+        </a>
+
+        <!-- Default snippet for navigation -->
+        <div class="main-navigation">
+          <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <ul class="menu">
+            <li class="menu-item current-menu-item" id="omar"><a href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
+            <!-- Add other menu items here -->
+          </ul>
+        </div>
+
+        <div class="mobile-navigation"></div>
+
+      </div>
+    </div> <!-- .site-header -->
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- Empty column to create space on the right -->
+          </div>
+          <div class="col-md-4">
+            <!-- Move the form to the right column -->
+            <form class="subscribe-form text-right custom-form bg-white">
+              <input type="text" class="custom-input" placeholder="Enter your email..." required>
+              <input type="submit" class="custom-button" value="Subscribe" required>
+            </form>
+          </div>
+        </div>
+        <p class="colophon">Copyright 2023, All rights reserved Ovik</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+  <script src="{% static 'js/plugins.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+
+</body>
+</html>
+
